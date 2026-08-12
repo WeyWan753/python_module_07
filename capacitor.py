@@ -1,0 +1,40 @@
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
+from ex1 import HealCapability, TransformCapability
+from typing import cast
+
+
+if __name__ == "__main__":
+    print("Testing Creature with healing capability")
+    hcf = HealingCreatureFactory()
+    print("base:")
+    base_hcf = hcf.create_base()
+    print(base_hcf.describe())
+    print(base_hcf.attack())
+    base_healer = cast(HealCapability, base_hcf)
+    print(base_healer.heal())
+    print("evolved:")
+    evolved_hcf = hcf.create_evolved()
+    print(evolved_hcf.describe())
+    print(evolved_hcf.attack())
+    evolved_healer = cast(HealCapability, evolved_hcf)
+    print(evolved_healer.heal())
+    print()
+
+    print("Testing Creature with transform capability")
+    tcf = TransformCreatureFactory()
+    print("base:")
+    base_tcf = tcf.create_base()
+    print(base_tcf.describe())
+    print(base_tcf.attack())
+    base_transformer = cast(TransformCapability, base_tcf)
+    print(base_transformer.transform())
+    print(base_tcf.attack())
+    print(base_transformer.revert())
+    print("evolved:")
+    evolved_tcf = tcf.create_evolved()
+    print(evolved_tcf.describe())
+    print(evolved_tcf.attack())
+    evolved_transformer = cast(TransformCapability, evolved_tcf)
+    print(evolved_transformer.transform())
+    print(evolved_tcf.attack())
+    print(evolved_transformer.revert())
